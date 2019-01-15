@@ -2,6 +2,8 @@
 
 import MySQLdb
 
+import display as d
+
 def veriMaster (num):
 	# Open database connection
 	db = MySQLdb.connect("localhost","pi","","teste" )
@@ -26,6 +28,7 @@ def veriMaster (num):
 			card_nome   = row[1]
 			if str(num) == str(card_code):
 				encontrado = "Tarjeta Cadastrada, porfavor pase!"
+				d.printi("Por Favor PASE","     ;)")
 				cursor.execute(sqli)
 				db.commit()
 #				porta.abrir()

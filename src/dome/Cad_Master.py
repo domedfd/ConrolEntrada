@@ -3,6 +3,9 @@
 import RPi.GPIO as GPIO
 import SimpleMFRC522
 import MySQLdb
+import time
+
+import display as d
 
 def cadastroMaster ():
         # Open database connection
@@ -25,6 +28,8 @@ def cadastroMaster ():
                 cursor.execute(sql)
                 db.commit()
 		print("Grabado con exito")
+		d.printi("Grabado con","   Exito!")
+		time.sleep(2)
 
 	finally:
 	        GPIO.cleanup()
