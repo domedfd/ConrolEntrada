@@ -45,7 +45,7 @@ try:
 			print("Nueva Targeja Master Configurada!\n\n")
 		else:
 			print("Nao esta Cadastrado!")
-			d.printi("La TARJETA","NO VALIDA! :(")
+			d.printi("LA TARJETA","NO ES VALIDA!:(")
 			time.sleep(2)
 except KeyboardInterrupt:
 	print("\nhasta luego!")

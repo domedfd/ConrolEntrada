@@ -4,6 +4,7 @@ import RPi.GPIO as GPIO
 import SimpleMFRC522
 import MySQLdb
 import time
+import mongo
 
 import verificar as veri
 import verificar_master as verMaster
@@ -40,6 +41,7 @@ def cadastrar ():
 				time.sleep(2)
 			else:
 	                	sqla = "INSERT INTO card(card_code, card_nome, card_data, card_master, card_entradas) VALUES ( '%s', ' Nueva Tarjeta', current_date(), 0, 0 )" % (str(id))
+				mongo.update(id)
 	                	cursor.execute(sqla)
 	                	db.commit()
 				reader.write("Nueva")

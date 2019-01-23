@@ -2,29 +2,30 @@
 import RPi.GPIO as GPIO
 import time
 
+
 def abrir ():
+	channel = 21
+	canal = 20
 
-	servo = 17
-
+	# GPIO setup
 	GPIO.setmode(GPIO.BCM)
+	GPIO.setup(channel, GPIO.OUT)
+	GPIO.setup(canal, GPIO.OUT)
 
-	GPIO.setup(servo,GPIO.OUT)
+	def motor_on(pin, pin2):
+	    GPIO.output(pin, GPIO.HIGH)  # Turn motor on
+	    GPIO.output(pin2, GPIO.LOW)
 
-	p=GPIO.PWM(servo,50)# 50hz frequency
 
-	p.start(2.5)# starting duty cycle ( it set the servo to 0 degree )
-
+	def motor_off(pin, pin2):
+	    GPIO.output(pin, GPIO.LOW)  # Turn motor off
+	    GPIO.output(pin2, GPIO.HIGH)  # Turn motor off
 
 	try:
-		p.ChangeDutyCycle(11)
-	        time.sleep(2)
-
-	        p.ChangeDutyCycle(3)
-		time.sleep(1)
-		p.start(2.5)
-
+		motor_off(channel, canal)
+		time.sleep(2)
+		motor_on(channel, canal)
 	except KeyboardInterrupt:
 		GPIO.cleanup()
-	finally:
-		GPIO.cleanup()
-abrir()
+
+
